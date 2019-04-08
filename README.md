@@ -1,2 +1,3 @@
-# some python files 
+:smile:
+# Solutions for Algorithms.
 
