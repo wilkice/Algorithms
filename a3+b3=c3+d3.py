@@ -1,19 +1,22 @@
 '''
 find integer under 1000 to make a3+b3=c3+d3
 '''
-def add():
-    total = {}
-    global sorted_list, add_list
-    add_list=[]
-    for i in range(1001):
-        for j in range(i+1,1001):
-            sum = i ** 3 + j ** 3
-            if sum in total:
-                total[sum] +=1
-                add_list.append(sum)  # save at least have 2 pair integer into this list
+all_result = {}
+pairs_result = []
+def add(num):
+    for i in range(1,num+1):
+        for j in range(i, num+1):
+            result = i ** 3 + j ** 3
+            # 不在字典里就添加
+            if result not in all_result.keys():
+                all_result[result]=[(i,j)] 
             else:
-                total[sum] = 1
-    sorted_list = sorted(total.items(),key=lambda kv:kv[1])
+            # 添加新的数字队到字典的值， 且把这个值加到新列表，此表是有2个数字队的result组成的，后面直接从这里取值
+                all_result[result].append((i, j))
+                pairs_result.append(result)
+    print('all been added')
 
-add()
-print(add_list)
+    for result in pairs_result:
+        print(result, all_result[result])
+
+add(1000)
